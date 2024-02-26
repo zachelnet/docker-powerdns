@@ -19,6 +19,7 @@ RUN apk --update add bash libpq sqlite-libs libstdc++ libgcc mariadb-client mari
     mv /tmp/lib* /usr/lib/ && \
     rm -rf /tmp/pdns-$POWERDNS_VERSION /var/cache/apk/*
 
+COPY schema.sql pdns.conf /etc/pdns/
 COPY entrypoint.sh /
 
 EXPOSE 53/tcp 53/udp
