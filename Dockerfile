@@ -7,10 +7,10 @@ RUN apk --update add bash libpq sqlite-libs libstdc++ libgcc mariadb-client mari
     apk add --virtual build-deps g++ make mariadb-dev postgresql-dev sqlite-dev boost-dev libsodium-dev mariadb-connector-c-dev && \
     curl -sSL https://downloads.powerdns.com/releases/pdns-$POWERDNS_VERSION.tar.bz2 | tar xj -C /tmp && \
     cd /tmp/pdns-$POWERDNS_VERSION && \
-    ./configure --prefix="" --exec-prefix=/usr --sysconfdir=/etc/powerdns \
+    ./configure --prefix="" --exec-prefix=/usr --sysconfdir=/etc/pdns \
       --with-modules="bind gmysql gpgsql gsqlite3" --with-libsodium && \
     make && make install-strip && cd / && \
-    mkdir -p /etc/powerdns/conf.d && \
+    mkdir -p /etc/pdns/conf.d && \
     addgroup -S pdns 2>/dev/null && \
     adduser -S -D -H -h /var/empty -s /bin/false -G pdns -g pdns pdns 2>/dev/null && \
     cp /usr/lib/libboost_program_options.so* /tmp && \
