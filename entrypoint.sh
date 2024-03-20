@@ -73,7 +73,7 @@ if $MYSQL_AUTOCONF ; then
   fi
 
   # init database if necessary
-  echo "CREATE DATABASE IF NOT EXISTS $MYSQL_DB;" | $MYSQLCMD
+#  echo "CREATE DATABASE IF NOT EXISTS $MYSQL_DB;" | $MYSQLCMD
   MYSQLCMD="$MYSQLCMD $MYSQL_DB"
 
   if [ "$(echo "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = \"$MYSQL_DB\";" | $MYSQLCMD)" -le 1 ]; then
